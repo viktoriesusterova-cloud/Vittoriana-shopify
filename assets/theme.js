@@ -45,34 +45,39 @@
   });
 
   // Bit Bracelet carousel — arrows cycle, swatches jump directly
-  const bitImg = document.getElementById('bit-carousel-img');
-  const bitSwatches = Array.from(document.querySelectorAll('.bit-swatch'));
-  let bitIndex = 0;
+  // (guarded: this section isn't built yet on every page, so bail out cleanly if absent)
+  if (document.querySelector('.bit-carousel')) {
+    const bitImg = document.getElementById('bit-carousel-img');
+    const bitSwatches = Array.from(document.querySelectorAll('.bit-swatch'));
+    let bitIndex = 0;
 
-  // Preload every colour so swapping src never shows a blank/decoding flash
-  bitSwatches.forEach(s => { const pre = new Image(); pre.src = s.dataset.img; });
+    // Preload every colour so swapping src never shows a blank/decoding flash
+    bitSwatches.forEach(s => { const pre = new Image(); pre.src = s.dataset.img; });
 
-  function setBitIndex(i) {
-    bitIndex = (i + bitSwatches.length) % bitSwatches.length;
-    const swatch = bitSwatches[bitIndex];
-    bitSwatches.forEach(s => s.classList.remove('active'));
-    swatch.classList.add('active');
-    const label = swatch.querySelector('span').textContent;
-    bitImg.classList.add('fading');
-    setTimeout(() => {
-      bitImg.src = swatch.dataset.img;
-      bitImg.alt = 'The Bit Bracelet in ' + label;
-      bitImg.classList.remove('fading');
-    }, 350);
+    function setBitIndex(i) {
+      bitIndex = (i + bitSwatches.length) % bitSwatches.length;
+      const swatch = bitSwatches[bitIndex];
+      bitSwatches.forEach(s => s.classList.remove('active'));
+      swatch.classList.add('active');
+      const label = swatch.querySelector('span').textContent;
+      bitImg.classList.add('fading');
+      setTimeout(() => {
+        bitImg.src = swatch.dataset.img;
+        bitImg.alt = 'The Bit Bracelet in ' + label;
+        bitImg.classList.remove('fading');
+      }, 350);
+    }
+
+    bitSwatches.forEach((swatch, i) => {
+      swatch.addEventListener('click', () => setBitIndex(i));
+    });
+    document.querySelector('.bit-carousel-prev').addEventListener('click', () => setBitIndex(bitIndex - 1));
+    document.querySelector('.bit-carousel-next').addEventListener('click', () => setBitIndex(bitIndex + 1));
   }
 
-  bitSwatches.forEach((swatch, i) => {
-    swatch.addEventListener('click', () => setBitIndex(i));
-  });
-  document.querySelector('.bit-carousel-prev').addEventListener('click', () => setBitIndex(bitIndex - 1));
-  document.querySelector('.bit-carousel-next').addEventListener('click', () => setBitIndex(bitIndex + 1));
-
   // ====== CAR-STYLE CONFIGURATOR ======
+  // (guarded: the whole block only runs on the page that has the configurator markup)
+  if (document.getElementById('c-main-img')) {
   const cs = { step: 1, piece: null, metal: null, horseName: '', privateDate: '', size: '', price: 0 };
   const stepNames = ['Choose your piece', 'Choose your metal', 'Your engravings', 'Your wrist size', 'Your details'];
   const previewImgs = {
@@ -417,3 +422,4 @@
   document.getElementById('c-btn-back').addEventListener('click', () => { if (cs.step > 1) goToStep(cs.step - 1); });
 
   updateProgress(); updateSummary();
+  } // end configurator guard
