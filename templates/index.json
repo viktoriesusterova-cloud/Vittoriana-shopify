@@ -1,8 +1,39 @@
 {
   "sections": {
-    "hero": {
-      "type": "hero"
-    }
+    "hero": { "type": "hero" },
+    "mottos": {
+      "type": "mottos",
+      "blocks": {
+        "m1": { "type": "motto", "settings": { "number": "I.", "text": "<p>A bracelet that <em>holds</em> your memories.</p>" } },
+        "m2": { "type": "motto", "settings": { "number": "II.", "text": "<p>Close to you.<br><em>Forever.</em></p>" } },
+        "m3": { "type": "motto", "settings": { "number": "III.", "text": "<p>A memory<br><em>kept forever.</em></p>" } }
+      },
+      "block_order": ["m1", "m2", "m3"]
+    },
+    "engraving": {
+      "type": "engraving",
+      "blocks": {
+        "e1": { "type": "milestone", "settings": { "label": "the beginning", "text": "The day you met — and rode them for the first time." } },
+        "e2": { "type": "milestone", "settings": { "label": "the first win", "text": "Your first winning class together." } },
+        "e3": { "type": "milestone", "settings": { "label": "the big one", "text": "The biggest win. Perhaps even the Olympics." } },
+        "e4": { "type": "milestone", "settings": { "label": "retirement", "text": "The day they retired from competition." } }
+      },
+      "block_order": ["e1", "e2", "e3", "e4"]
+    },
+    "atmos_break": { "type": "atmos-break" },
+    "process": {
+      "type": "process",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "numeral": "I", "title": "Consultation", "text": "Together we choose the metal, the braid style, and the engraving — the name, a date, or a quiet reminder." } },
+        "s2": { "type": "step", "settings": { "numeral": "II", "title": "Send the Hair", "text": "We send you our signature envelope. Cut a small strand from your horse's mane and post it back to us." } },
+        "s3": { "type": "step", "settings": { "numeral": "III", "title": "Crafting", "text": "In our Prague atelier, master jewellers braid the strand and seal it into solid metal — by hand." } },
+        "s4": { "type": "step", "settings": { "numeral": "IV", "title": "Delivery", "text": "Your piece arrives in signature packaging with the certificate of authenticity." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "ring_emotional": { "type": "ring-emotional" },
+    "heritage": { "type": "heritage" },
+    "gallery": { "type": "gallery" }
   },
-  "order": ["hero"]
+  "order": ["hero", "mottos", "engraving", "atmos_break", "process", "ring_emotional", "heritage", "gallery"]
 }

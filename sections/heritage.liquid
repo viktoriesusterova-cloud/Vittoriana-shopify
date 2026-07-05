@@ -1,0 +1,27 @@
+<section class="heritage" id="story">
+  <div class="heritage-image" style="{% if section.settings.image != blank %}background-image: url('{{ section.settings.image | image_url: width: 1600 }}');{% endif %}"></div>
+  <div class="heritage-content">
+    <div class="section-eyebrow">{{ section.settings.eyebrow }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+    {{ section.settings.body }}
+    <div class="heritage-signature">
+      <div class="name">— {{ section.settings.signature_name }}</div>
+      <div class="role">{{ section.settings.signature_role }}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heritage / Story",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Story" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Every horse left <em>a memory.</em></p>" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>A showjumper from the ponies to the big horses — every horse I have ever owned has shaped who I am. From the first pony that taught me how to fall and stand back up, to the ones who carried me through the biggest arenas.</p><p>I met so many special horses along the way. Each one left me with memories I wanted to keep close — and that's when I realised I wanted them with me on my wrist. A quiet reminder that even though some of them are no longer here, they are still close to me every time I look at my hand.</p><p>Vittoriana is made for everyone who has ever felt the same way.</p>" },
+    { "type": "text", "id": "signature_name", "label": "Signature name", "default": "Vittoria" },
+    { "type": "text", "id": "signature_role", "label": "Signature role", "default": "Founder & Designer" }
+  ],
+  "presets": [{ "name": "Heritage / Story" }]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+<section class="ring-emotional">
+  <div class="ring-emotional-image" style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}"></div>
+  <div class="ring-emotional-content">
+    <div class="section-eyebrow">{{ section.settings.eyebrow }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+    {{ section.settings.body }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ring emotional",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Moments that stay" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Some moments deserve <em>to be kept.</em></p>" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>The wins. The finish-line embraces. The quiet mornings before the world wakes. Vittoriana is not just a piece of jewellery — it is the moment you share, held in gold, rose gold, or silver.</p><p>A memory, kept forever.</p>" }
+  ],
+  "presets": [{ "name": "Ring emotional" }]
+}
+{% endschema %}

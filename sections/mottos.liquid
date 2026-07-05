@@ -1,0 +1,37 @@
+<section class="mottos">
+  <div class="mottos-grid">
+    {% for block in section.blocks %}
+      <div class="motto" {{ block.shopify_attributes }}>
+        <div class="motto-num">{{ block.settings.number }}</div>
+        <div class="motto-text">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mottos",
+  "blocks": [
+    {
+      "type": "motto",
+      "name": "Motto",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "I." },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>A bracelet that <em>holds</em> your memories.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Mottos",
+      "blocks": [
+        { "type": "motto", "settings": { "number": "I.", "text": "<p>A bracelet that <em>holds</em> your memories.</p>" } },
+        { "type": "motto", "settings": { "number": "II.", "text": "<p>Close to you.<br><em>Forever.</em></p>" } },
+        { "type": "motto", "settings": { "number": "III.", "text": "<p>A memory<br><em>kept forever.</em></p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

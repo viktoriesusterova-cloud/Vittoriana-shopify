@@ -1,0 +1,18 @@
+<section class="atmos-break" style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}">
+  <div class="atmos-break-text">
+    <div class="label">{{ section.settings.label }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Atmospheric break",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+    { "type": "text", "id": "label", "label": "Label", "default": "The bond" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>\"A piece of them <em>you carry everywhere.\"</em></p>" }
+  ],
+  "presets": [{ "name": "Atmospheric break" }]
+}
+{% endschema %}

@@ -1,0 +1,42 @@
+<section class="gallery">
+  <div class="gallery-header">
+    <div class="section-eyebrow">{{ section.settings.eyebrow }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.lead }}</p>
+  </div>
+  <div class="gallery-grid">
+    {% for block in section.blocks %}
+      <div class="gallery-item{% if block.settings.wide %} gallery-item--wide{% endif %}" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <img src="{{ block.settings.image | image_url: width: 1200 }}"
+               alt="{{ block.settings.image.alt | default: block.settings.alt }}"
+               width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
+               loading="lazy" decoding="async">
+        {%- endif -%}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gallery",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Moments" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>For those who live <em>between two hearts.</em></p>" },
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "The shared jumps and the finish-line embraces, yes — but also the quiet mornings at the stable the day after a big win, the small rituals, the nose against your shoulder. A life with horses is lived in both the loud and the silent moments." }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Alt text (fallback)" },
+        { "type": "checkbox", "id": "wide", "label": "Full width (wide)", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Gallery" }]
+}
+{% endschema %}

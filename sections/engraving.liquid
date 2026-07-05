@@ -1,0 +1,64 @@
+<section class="engraving">
+  <div class="engraving-inner">
+    <div class="engraving-content">
+      <div class="section-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2>{{ section.settings.heading }}</h2>
+      <p class="lead">{{ section.settings.lead }}</p>
+      <ul class="engraving-examples">
+        {% for block in section.blocks %}
+          <li {{ block.shopify_attributes }}>
+            <span class="ex-label">— {{ block.settings.label }}</span>
+            <span class="ex-text">{{ block.settings.text }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="engraving-visual">
+      <div class="ev-outside">
+        <span class="ev-tag">Outside · Visible</span>
+        <input type="text" class="ev-input" placeholder="{{ section.settings.name_placeholder }}" maxlength="25" aria-label="Try it — type your horse's name">
+        <div class="ev-hint">Try it — type your horse's name</div>
+      </div>
+      <div class="ev-inside">
+        <span class="ev-tag">Inside · Private</span>
+        <input type="text" class="ev-input" placeholder="{{ section.settings.date_placeholder }}" maxlength="20" aria-label="A private date, known only to you">
+        <div class="ev-hint">A private date, known only to you</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Engraving story",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Two Engravings. One Story." },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>A name for the world. <em>A date for you.</em></p>" },
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "On the outside of the bracelet, your horse's name — in timeless script, for everyone to see. On the inside, something only you will know: a single date that holds your whole story together." },
+    { "type": "text", "id": "name_placeholder", "label": "Name field placeholder", "default": "Oxford Dwerse Hagen" },
+    { "type": "text", "id": "date_placeholder", "label": "Date field placeholder", "default": "12 · 06 · 2019" }
+  ],
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Milestone",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "the beginning" },
+        { "type": "text", "id": "text", "label": "Text", "default": "The day you met — and rode them for the first time." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Engraving story",
+      "blocks": [
+        { "type": "milestone", "settings": { "label": "the beginning", "text": "The day you met — and rode them for the first time." } },
+        { "type": "milestone", "settings": { "label": "the first win", "text": "Your first winning class together." } },
+        { "type": "milestone", "settings": { "label": "the big one", "text": "The biggest win. Perhaps even the Olympics." } },
+        { "type": "milestone", "settings": { "label": "retirement", "text": "The day they retired from competition." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

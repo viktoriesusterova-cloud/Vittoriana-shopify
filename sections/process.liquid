@@ -1,0 +1,51 @@
+<section class="process" id="process">
+  <div class="process-header">
+    <div class="section-eyebrow">{{ section.settings.eyebrow }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.lead }}</p>
+  </div>
+
+  <div class="process-steps">
+    {% for block in section.blocks %}
+      <div class="step" {{ block.shopify_attributes }}>
+        <div class="step-circle">{{ block.settings.numeral }}</div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Process",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Process" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Four quiet steps from <em>hair to heirloom.</em></p>" },
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "Each Vittoriana piece is made to order. From the moment you reserve your piece, to the day it arrives at your door." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "numeral", "label": "Roman numeral", "default": "I" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Consultation" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Process",
+      "blocks": [
+        { "type": "step", "settings": { "numeral": "I", "title": "Consultation", "text": "Together we choose the metal, the braid style, and the engraving — the name, a date, or a quiet reminder." } },
+        { "type": "step", "settings": { "numeral": "II", "title": "Send the Hair", "text": "We send you our signature envelope. Cut a small strand from your horse's mane and post it back to us." } },
+        { "type": "step", "settings": { "numeral": "III", "title": "Crafting", "text": "In our Prague atelier, master jewellers braid the strand and seal it into solid metal — by hand." } },
+        { "type": "step", "settings": { "numeral": "IV", "title": "Delivery", "text": "Your piece arrives in signature packaging with the certificate of authenticity." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
