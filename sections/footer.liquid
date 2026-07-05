@@ -1,0 +1,44 @@
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="{{ 'logo_transparent.webp' | asset_url }}" alt="{{ shop.name }}" class="logo-footer-img" width="1855" height="848" loading="lazy" decoding="async">
+        <p class="tagline">{{ section.settings.tagline }}</p>
+        <p>{{ section.settings.blurb }}</p>
+      </div>
+      <div class="footer-col">
+        <h3>Collection</h3>
+        <ul>
+          <li><a href="#signature">The Bracelet</a></li>
+          <li><a href="#signature">The Ring</a></li>
+          <li><a href="#process">The Process</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>About</h3>
+        <ul>
+          <li><a href="#story">Our Story</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name | upcase }} · Prague · All rights reserved</span>
+      <div class="socials">
+        {% if section.settings.instagram_url != blank %}
+          <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer" aria-label="IG — Instagram">IG</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "A memory kept forever." },
+    { "type": "textarea", "id": "blurb", "label": "Blurb", "default": "Fine equestrian jewellery, handcrafted in Prague, for those who live between two hearts." },
+    { "type": "url", "id": "instagram_url", "label": "Instagram URL", "default": "https://www.instagram.com/vittoriana_charms_official/" }
+  ]
+}
+{% endschema %}

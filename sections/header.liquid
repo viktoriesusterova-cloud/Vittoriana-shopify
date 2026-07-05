@@ -1,0 +1,43 @@
+<nav id="nav">
+  <div class="nav-inner">
+    <ul class="nav-links">
+      {% for block in section.blocks %}
+        <li><a href="{{ block.settings.url }}">{{ block.settings.label }}</a></li>
+      {% endfor %}
+    </ul>
+    {%- if section.settings.logo != blank -%}
+      <img src="{{ section.settings.logo | image_url: width: 1855 }}" alt="{{ shop.name }}" class="logo-nav-img" width="1855" height="848" loading="eager">
+    {%- else -%}
+      <img src="{{ 'logo_transparent.webp' | asset_url }}" alt="{{ shop.name }}" class="logo-nav-img" width="1855" height="848" loading="eager">
+    {%- endif -%}
+    <a href="{{ section.settings.cta_url }}" class="nav-cta">{{ section.settings.cta_label }}</a>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "url", "id": "cta_url", "label": "CTA link", "default": "#preorder" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Pre-Order" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Nav link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "link", "settings": { "label": "Collection", "url": "#signature" } },
+      { "type": "link", "settings": { "label": "Process", "url": "#process" } },
+      { "type": "link", "settings": { "label": "Story", "url": "#story" } }
+    ]
+  }
+}
+{% endschema %}

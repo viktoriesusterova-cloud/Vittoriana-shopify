@@ -1,0 +1,13 @@
+<div class="announce">
+  ✦ <strong>{{ section.settings.strong_text }}</strong> · {{ section.settings.rest_text }} ✦
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "text", "id": "strong_text", "label": "Bold text", "default": "Now accepting pre-orders" },
+    { "type": "text", "id": "rest_text", "label": "Rest of text", "default": "Only 50 pieces in the first edition · Handcrafted in Prague" }
+  ]
+}
+{% endschema %}

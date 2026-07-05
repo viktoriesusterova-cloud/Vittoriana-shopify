@@ -1,0 +1,18 @@
+{
+  "current": {
+    "color_navy": "#1a2f5c",
+    "color_navy_deep": "#0f1f42",
+    "color_cream": "#ebe2d2",
+    "color_burgundy": "#6b1a23",
+    "color_gold": "#b89457"
+  },
+  "presets": {
+    "Default": {
+      "color_navy": "#1a2f5c",
+      "color_navy_deep": "#0f1f42",
+      "color_cream": "#ebe2d2",
+      "color_burgundy": "#6b1a23",
+      "color_gold": "#b89457"
+    }
+  }
+}

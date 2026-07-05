@@ -1,0 +1,33 @@
+<section class="hero">
+  <div class="hero-image" style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">{{ section.settings.eyebrow }}</div>
+    <h1>{{ section.settings.heading }}</h1>
+    <p class="hero-lead">{{ section.settings.lead }}</p>
+    <div class="hero-actions">
+      <a href="{{ section.settings.primary_url }}" class="btn btn-primary">
+        {{ section.settings.primary_label }} <span class="btn-arrow">→</span>
+      </a>
+      <a href="{{ section.settings.secondary_url }}" class="btn btn-secondary">{{ section.settings.secondary_label }}</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "A Memory Kept Forever" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Jewellery that holds <em>your memories.</em></p>" },
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "The hair of your horse, woven into fine gold, rose gold, or silver — jewellery that is not only beautiful, but a story you carry with you." },
+    { "type": "url", "id": "primary_url", "label": "Primary button link", "default": "#preorder" },
+    { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Reserve your piece" },
+    { "type": "url", "id": "secondary_url", "label": "Secondary button link", "default": "#signature" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Discover the collection" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}
